@@ -28,11 +28,11 @@ PHP Extensions (Linux Package) :
 
 Clone and composer install :
 ```sh
-# git clone --recurse-submodules https://gitlab.com/pt-dot-playground/training-devops/laravel-advanced.git
-# cd laravel-advanced/src && composer install
-# cp .env.example .env
-# php artisan key:generate
-# nano .env
+$ git clone --recurse-submodules https://gitlab.com/pt-dot-playground/training-devops/laravel-advanced.git
+$ cd laravel-advanced/src && composer install
+$ cp .env.example .env
+$ php artisan key:generate
+$ nano .env
 ```
 Edit .env file :
 ```sh
@@ -47,15 +47,15 @@ DB_PASSWORD=secret
 ```
 Run docker-compose :
 ```sh
-# cd .. && docker-compose up -d
-# docker-compose exec -it php /bin/bash
+$ cd .. && docker-compose up -d
+$ docker-compose exec -it php /bin/bash
 ```
 Configure PHP Container :
 ```sh
 //inside the PHP container
-# php artisan migrate --seed
-# php artisan storage:link
-# chmod -R gu+w storage
-# chmod -R guo+w storage
-# php artisan cache:clear
+$ php artisan migrate --seed
+$ php artisan storage:link
+$ chmod -R gu+w storage
+$ chmod -R guo+w storage
+$ php artisan cache:clear
 ```
