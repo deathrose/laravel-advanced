@@ -7,31 +7,15 @@ https://github.com/nasirkhan/laravel-starter
 Software :
 - docker-compose
 - docker-engine
-- php >= 7.3
-- php composer
 
-
-PHP Extensions (Linux Package) :
-- php-mcrypt 
-- php-cli 
-- php-gd 
-- php-curl 
-- php-mysql 
-- php-ldap 
-- php-zip 
-- php-fileinfo
-- php-imagick 
-- php-xml
-- php-mbstring
 
 ### Installation
 
 Clone and composer install :
 ```sh
 $ git clone --recurse-submodules https://gitlab.com/pt-dot-playground/training-devops/laravel-advanced.git
-$ cd laravel-advanced/src && composer install
+$ cd laravel-advanced/src 
 $ cp .env.example .env
-$ php artisan key:generate
 $ nano .env
 ```
 Edit .env file :
@@ -44,18 +28,30 @@ DB_DATABASE=laravel-starter
 DB_USERNAME=homestead
 DB_PASSWORD=secret
 ...
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=9367bebf8db8b6
+MAIL_PASSWORD=dc5cff3e54ac1f
+MAIL_ENCRYPTION=tls
+...
 ```
 Run docker-compose :
 ```sh
 $ cd .. && docker-compose up -d
 $ docker-compose exec -it php /bin/bash
+or 
+$ docker-compose exec -it php /bin/sh
 ```
 Configure PHP Container :
 ```sh
 //inside the PHP container
+$ composer install
+$ php artisan key:generate
 $ php artisan migrate --seed
 $ php artisan storage:link
 $ chmod -R gu+w storage
 $ chmod -R guo+w storage
 $ php artisan cache:clear
 ```
+
