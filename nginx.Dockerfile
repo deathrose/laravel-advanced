@@ -3,16 +3,17 @@ FROM php:7.4-fpm
 WORKDIR /var/www/html
 
 RUN apt-get update && apt-get install -y \
+    nginx \
+    file \
+    re2c \
+    zip \
     libmcrypt-dev \
     libldb-dev \
     libldap2-dev \
     libzip-dev \
-    zip \
     libgmp-dev \
-    re2c \
     libmhash-dev \
     libmcrypt-dev \
-    file \
     zlib1g-dev \
     libpng-dev \
     libmagickwand-6.q16-dev --no-install-recommends \
@@ -24,7 +25,8 @@ RUN apt-get update && apt-get install -y \
     zip \
     fileinfo \
     gmp \
-    pdo pdo_mysql \
+    pdo \
+    pdo_mysql \
 && pecl install \
     mcrypt \
     imagick \
@@ -33,4 +35,5 @@ RUN apt-get update && apt-get install -y \
     imagick \
 && apt-get autoremove -y \
 && apt-get clean \
-&& apt-get purge *-dev -y 
+&& apt-get purge *-dev -y \
+&& rm -rf /tmp/*
